@@ -68,8 +68,8 @@ export default function Navbar() {
             </svg>
           </span>
           <span className="navbar__logo-text">
-            <span className="navbar__logo-name">Zade</span>
-            <span className="navbar__logo-sub">Constructions</span>
+            <span className="navbar__logo-name">Padmanabh</span>
+            <span className="navbar__logo-sub">Construction company</span>
           </span>
         </a>
 

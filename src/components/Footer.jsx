@@ -55,8 +55,8 @@ export default function Footer() {
                 </svg>
               </span>
               <span className="footer__logo-text">
-                <span className="footer__logo-name">Zade</span>
-                <span className="footer__logo-sub">Constructions</span>
+                <span className="footer__logo-name">Padmanabh</span>
+                <span className="footer__logo-sub">Construction Company</span>
               </span>
             </div>
             <p className="footer__tagline">
@@ -208,7 +208,7 @@ export default function Footer() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <a href="tel:+919876543210">+91 98765 43210</a>
+                <a href="tel:+919960123560">+91 99601 23560</a>
               </div>
               <div className="footer__contact-item">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -228,8 +228,8 @@ export default function Footer() {
                     strokeLinecap="round"
                   />
                 </svg>
-                <a href="mailto:hello@Zadeconstructions.in">
-                  hello@Zadeconstructions.in
+                <a href="mailto:padmanabhconstruction@gmail.com">
+                  padmanabhconstruction@gmail.com
                 </a>
               </div>
               <div className="footer__contact-item">
@@ -259,8 +259,8 @@ export default function Footer() {
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
           <p>
-            © {new Date().getFullYear()} Zade Constructions Pvt. Ltd. All rights
-            reserved.
+            © {new Date().getFullYear()} Padmanabh Construction Company Pvt.
+            Ltd. All rights reserved.
           </p>
           <p>
             Made with care in <span>Nagpur, Maharashtra</span>

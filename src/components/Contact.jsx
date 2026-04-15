@@ -26,8 +26,8 @@ const contactInfo = [
       </svg>
     ),
     label: "Call Us",
-    value: "+91 98765 43210",
-    href: "tel:+919876543210",
+    value: "+91 99601 23560",
+    href: "tel:+919960123560",
   },
   {
     icon: (
@@ -49,8 +49,8 @@ const contactInfo = [
       </svg>
     ),
     label: "Email Us",
-    value: "hello@Zadeconstructions.in",
-    href: "mailto:hello@Zadeconstructions.in",
+    value: "padmanabhconstruction@gmail.com",
+    href: "mailto:padmanabhconstruction@gmail.com",
   },
   {
     icon: (
@@ -70,7 +70,7 @@ const contactInfo = [
       </svg>
     ),
     label: "Visit Us",
-    value: "Plot 42, Dharampeth Ext., Nagpur – 440010",
+    value: "Plot 295, Ram Nagar, Nagpur – 440010",
     href: "https://maps.google.com",
   },
 ];

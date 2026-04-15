@@ -18,7 +18,7 @@ const highlights = [
         />
       </svg>
     ),
-    title: "20+ Years",
+    title: "26+ Years",
     desc: "Building homes across Nagpur with proven expertise and trusted relationships.",
   },
   {
@@ -93,13 +93,10 @@ export default function About() {
           className={`about__images fade-in ${imgVisible ? "visible" : ""}`}
         >
           <div className="about__img-main">
-            <img
-              src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&auto=format&fit=crop"
-              alt="Home construction in Nagpur"
-            />
+            <img src="image-1.jpeg" alt="Home construction in Nagpur" />
             <div className="about__img-overlay">
               <p className="about__img-years">
-                <span>20</span>
+                <span>26</span>
                 <small>
                   Years of
                   <br />
@@ -136,19 +133,19 @@ export default function About() {
         {/* Right: Content */}
         <div ref={sectionRef} className="about__content">
           <p className={`section-label fade-up ${visible ? "visible" : ""}`}>
-            About Zade Constructions
+            About Padmanabh Constructions
           </p>
 
           <h2
             className={`section-heading about__heading fade-up stagger-1 ${visible ? "visible" : ""}`}
           >
-            Crafting Homes with <em>Heart</em> Since 2004
+            Crafting Homes with <em>Heart</em> Since 2000
           </h2>
 
           <p
             className={`about__text fade-up stagger-2 ${visible ? "visible" : ""}`}
           >
-            Zade Constructions was founded with one belief: every family
+            Padmanabh Constructions was founded with one belief: every family
             deserves a home built to last, designed to inspire, and delivered
             with integrity. Over two decades, we have become Nagpur's most
             trusted name in residential home building — not through scale, but

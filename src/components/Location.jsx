@@ -37,27 +37,27 @@ const trustPoints = [
     title: "Deep Local Knowledge",
     text: "We know Nagpur soil types, NMRDA regulations, and neighbourhood nuances inside out.",
   },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none">
-        <path
-          d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-        <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="1.5" />
-        <path
-          d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
-    title: "Trusted by 350+ Families",
-    text: "From first-time home builders to multi-generational families — Nagpur trusts Zade.",
-  },
+  // {
+  //   icon: (
+  //     <svg viewBox="0 0 24 24" fill="none">
+  //       <path
+  //         d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
+  //         stroke="currentColor"
+  //         strokeWidth="1.5"
+  //         strokeLinecap="round"
+  //       />
+  //       <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="1.5" />
+  //       <path
+  //         d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"
+  //         stroke="currentColor"
+  //         strokeWidth="1.5"
+  //         strokeLinecap="round"
+  //       />
+  //     </svg>
+  //   ),
+  //   title: "Trusted by 350+ Families",
+  //   text: "From first-time home builders to multi-generational families — Nagpur trusts Padmanabh.",
+  // },
   {
     icon: (
       <svg viewBox="0 0 24 24" fill="none">
@@ -179,7 +179,7 @@ export default function Location() {
             <div>
               <p className="location__office-name">Our Office</p>
               <p className="location__office-addr">
-                Plot 42, Dharampeth Extension,
+                Plot 295, Ram Nagar,
                 <br />
                 Nagpur - 440010, Maharashtra
               </p>
