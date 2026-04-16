@@ -156,7 +156,7 @@ export default function Location() {
             {/* Embedded Google Map placeholder */}
             <iframe
               title="Zade Constructions Location - Nagpur"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119370.21073046247!2d79.00190995!3d21.14631335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0a5b8e7e10f%3A0x64d1f5d3fee1d28!2sNagpur%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1695555555555!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.3003991593478!2d79.0535792753041!3d21.14044028053696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c06707478771%3A0x82c6ea0c0bf948bd!2s295%2C%20Ram%20Nagar%20Rd%2C%20Dharampeth%20Extension%2C%20Shivaji%20Nagar%2C%20Nagpur%2C%20Maharashtra%20440010%2C%20India!5e0!3m2!1sen!2sau!4v1776320489667!5m2!1sen!2sau"
               width="100%"
               height="100%"
               style={{ border: 0 }}

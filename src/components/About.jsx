@@ -93,7 +93,10 @@ export default function About() {
           className={`about__images fade-in ${imgVisible ? "visible" : ""}`}
         >
           <div className="about__img-main">
-            <img src="image-1.jpeg" alt="Home construction in Nagpur" />
+            <img
+              src="projects-image-1.jpeg"
+              alt="Home construction in Nagpur"
+            />
             <div className="about__img-overlay">
               <p className="about__img-years">
                 <span>26</span>

@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import "./Contact.css";
 
+const FORMSPREE_ID = "mpqkqvaz"; // Replace with your Formspree form ID
+const WHATSAPP_NUMBER = "919960123560"; // Replace with actual number if different
+
 const services = [
   "Custom Home Construction",
   "Renovation & Remodeling",
@@ -85,22 +88,65 @@ export default function Contact() {
     service: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
 
   const handleChange = (e) => {
     setFormData((p) => ({ ...p, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    setStatus("submitting");
+
+    // 1. Send to Formspree
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          service: formData.service,
+          message: formData.message,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Formspree error");
+    } catch (err) {
+      // Non-blocking — we still open WhatsApp even if Formspree fails
+      console.warn("Formspree submission failed:", err);
+    }
+
+    // 2. Open WhatsApp with pre-filled message
+    const waText = [
+      `*New Home Inquiry – Padmanabh Constructions*`,
+      ``,
+      `*Name:* ${formData.name}`,
+      `*Phone:* ${formData.phone}`,
+      formData.email ? `*Email:* ${formData.email}` : null,
+      `*Service:* ${formData.service}`,
+      formData.message ? `*Message:* ${formData.message}` : null,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`,
+      "_blank",
+    );
+
+    // 3. Show success + reset
+    setStatus("success");
     setFormData({ name: "", phone: "", email: "", service: "", message: "" });
+    setTimeout(() => setStatus("idle"), 5000);
   };
 
   return (
     <section className="contact" id="contact">
-      {/* Background accent */}
       <div className="contact__bg" aria-hidden="true" />
 
       <div className="container contact__container">
@@ -147,16 +193,12 @@ export default function Contact() {
 
           {/* WhatsApp CTA */}
           <a
-            href="https://wa.me/919876543210?text=Hello%2C%20I%27m%20interested%20in%20building%20a%20home."
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello, I'm interested in home construction services.")}`}
             className={`contact__whatsapp fade-up stagger-4 ${headVisible ? "visible" : ""}`}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <svg
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
             </svg>
             Quick Chat on WhatsApp
@@ -171,10 +213,14 @@ export default function Contact() {
           <div className="contact__form-card">
             <div className="contact__form-header">
               <h3>Request Free Consultation</h3>
-              <p>We'll call you back within 24 hours.</p>
+              <p>
+                Submits to email{" "}
+                <span className="contact__form-header-and">and</span> opens
+                WhatsApp instantly.
+              </p>
             </div>
 
-            {submitted ? (
+            {status === "success" ? (
               <div className="contact__success">
                 <div className="contact__success-icon">
                   <svg viewBox="0 0 24 24" fill="none">
@@ -187,10 +233,10 @@ export default function Contact() {
                     />
                   </svg>
                 </div>
-                <h4>Thank You!</h4>
+                <h4>Inquiry Sent!</h4>
                 <p>
-                  Your inquiry has been received. Our team will contact you
-                  shortly.
+                  Your details were emailed to us and WhatsApp opened for a
+                  quick follow-up. We'll be in touch shortly.
                 </p>
               </div>
             ) : (
@@ -264,17 +310,52 @@ export default function Contact() {
                   />
                 </div>
 
-                <button type="submit" className="btn-primary contact__submit">
-                  <span>Send My Inquiry</span>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                {/* Submit hint */}
+                <div className="contact__submit-hint">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path
-                      d="M3 8h10M9 4l4 4-4 4"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
+                      d="M7 1v6M4 4l3-3 3 3"
+                      stroke="var(--gold)"
+                      strokeWidth="1.3"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
+                    <path
+                      d="M2 9v2a1 1 0 001 1h8a1 1 0 001-1V9"
+                      stroke="var(--gold)"
+                      strokeWidth="1.3"
+                      strokeLinecap="round"
+                    />
                   </svg>
+                  <span>
+                    Sends your details to our email <strong>+</strong> opens
+                    WhatsApp for instant contact
+                  </span>
+                </div>
+
+                <button
+                  type="submit"
+                  className={`btn-primary contact__submit ${status === "submitting" ? "contact__submit--loading" : ""}`}
+                  disabled={status === "submitting"}
+                >
+                  {status === "submitting" ? (
+                    <>
+                      <span className="contact__spinner" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Send & Open WhatsApp</span>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                      </svg>
+                    </>
+                  )}
                 </button>
               </form>
             )}
