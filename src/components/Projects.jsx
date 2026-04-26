@@ -15,7 +15,7 @@ const projects = [
   {
     img: "projects-image-2.jpeg",
     title: "Chandekar's Villa",
-    location: "Wardha Road, Nagpur",
+    location: "Kamptee Road, Nagpur",
     type: "2 BHK · Turnkey Project",
     desc: "A modern villa featuring a bold façade, ambient lighting accents, and a compact yet elegant layout tailored for urban living.",
     year: "2023",
@@ -24,7 +24,7 @@ const projects = [
   {
     img: "projects-image-8.jpeg",
     title: "The Belekar House",
-    location: "Civil Lines, Nagpur",
+    location: "Kamptee Road, Nagpur",
     type: "4 BHK · Renovation & Extension",
     desc: "A stylish upgrade combining natural textures, glass elements, and vertical design to create a striking and modern family residence.",
     year: "2023",

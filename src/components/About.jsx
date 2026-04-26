@@ -55,7 +55,7 @@ const highlights = [
       </svg>
     ),
     title: "Expert Team",
-    desc: "40+ skilled architects, engineers, and craftsmen dedicated to your home vision.",
+    desc: "20+ skilled architects, engineers, and craftsmen dedicated to your home vision.",
   },
   {
     icon: (
@@ -115,7 +115,7 @@ export default function About() {
             />
           </div>
           {/* Floating award card */}
-          <div className="about__award">
+          {/* <div className="about__award">
             <div className="about__award-icon">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path
@@ -130,7 +130,7 @@ export default function About() {
               <p className="about__award-title">Best Residential Builder</p>
               <p className="about__award-sub">Nagpur Excellence Awards 2023</p>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Right: Content */}
